@@ -31,10 +31,10 @@ class Bienvenida extends StatelessWidget {
     return new Scaffold(
         body: Container(
         padding: EdgeInsets.only(
-          top: 130,
-          bottom: 10,
-          right: 10,
-          left: 10
+            top: 130,
+            bottom: 10,
+            right: 10,
+            left: 10
         ),
 
           child: Column(
@@ -160,55 +160,180 @@ class Parte1 extends StatelessWidget{
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(title: new Text("URGENCIA INTERIOR"),),
-      body: Center(
-        child: Text("URGENCIA INTERIOR"),
+      body: Container(
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget> [
+                    textSection,
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset('assets/images/1.jpg',
+                      width: 350,
+                      height: 200,
+                    )
+                  ],
+                ),
+              ],
+            ),
+          )
       ),
     );
   }
+  Widget textSection = Container(
+    child: Text(
+        "Aqui va el resultado"
+    ),
+  );
 }
 class Parte2 extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(title: new Text("TONICA FUNDAMENTAL"),),
-      body: Center(
-        child: Text("TONICA FUNDAMENTAL"),
+      body: Container(
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget> [
+                    textSection,
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset('assets/images/1.jpg',
+                      width: 350,
+                      height: 200,
+                    )
+                  ],
+                ),
+              ],
+            ),
+          )
       ),
     );
   }
+  Widget textSection = Container(
+    child: Text(
+        "Aqui va el resultado"
+    ),
+  );
 }
 class Parte3 extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(title: new Text("TONICA DEL DIA"),),
-      body: Center(
-        child: Text("TONICA DEL DIA"),
+      body: Container(
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget> [
+                    textSection,
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset('assets/images/1.jpg',
+                      width: 350,
+                      height: 200,
+                    )
+                  ],
+                ),
+              ],
+            ),
+          )
       ),
     );
   }
+  Widget textSection = Container(
+    child: Text(
+        "Aqui va el resultado"
+    ),
+  );
 }
 class Parte4 extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(title: new Text("ACONTECIMIENTO DEL DIA"),),
-      body: Center(
-        child: Text("ACONTECIMIENTO DEL DIA"),
+      body: Container(
+        child: Container(
+              child: Column(
+              children: <Widget>[
+                Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget> [
+                  textSection,
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset('assets/images/1.jpg',
+                    width: 350,
+                    height: 200,
+                  )
+                ],
+              ),
+            ],
+          ),
+        )
       ),
     );
   }
+  Widget textSection = Container(
+    child: Text(
+      "Aqui va el resultado"
+    ),
+  );
 }
 class Parte5 extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(title: new Text("CABALA DEL AÑO"),),
-      body: Center(
-        child: Text("CABALA DEL AÑO"),
+      body: Container(
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget> [
+                    textSection,
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset('assets/images/1.jpg',
+                      width: 350,
+                      height: 200,
+                    )
+                  ],
+                ),
+              ],
+            ),
+          )
       ),
     );
   }
+  Widget textSection = Container(
+    child: Text(
+        "Aqui va el resultado"
+    ),
+  );
 }
 
 class Menu extends StatelessWidget {

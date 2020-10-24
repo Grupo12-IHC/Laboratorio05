@@ -226,6 +226,7 @@ class Inicio extends StatelessWidget{
   }*/
 }
 class Parte1 extends StatelessWidget{
+  String x = "hola";
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -292,9 +293,11 @@ class Parte2 extends StatelessWidget{
     );
   }
   Widget textSection = Container(
-    child: Text(
-        "Aqui va el resultado"
-    ),
+    child: Container(
+      child: Text(
+          "Aqui va el resultado"
+      ),
+    )
   );
 }
 class Parte3 extends StatelessWidget{
@@ -532,6 +535,9 @@ class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: AppBar(
+          title: Text('OPERACIONES')
+      ),
       body: Container(
         padding: EdgeInsets.only(
             top: 130,
@@ -698,34 +704,6 @@ class Menu extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(10),
-                  child: RaisedButton(
-                    color: Colors.indigo,
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/inicio");
-                    },
-                    child: SizedBox(
-                      width: 250,
-                      height: 50,
-                      child: Center(
-                        child: Text("RETROCEDER",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            )
           ],
         ),
       ),

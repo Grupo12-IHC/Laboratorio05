@@ -240,15 +240,16 @@ class MyCustomFormState extends State<MyCustomForm> {
                 yearValue = yearController.text;
                 mesValue = mesController.text;
                 nameValue = nameController.text;
-                horaValue = nameController.text;
+                horaValue = horaController.text;
 
                 String fecha = diaValue.toString() + " " +  mesValue.toString() + " " + yearValue.toString();
                 usuario.nombreCompleto = nameValue;
                 usuario.fechaNacimiento = fecha;
+                usuario.horaAcontecimiento = int.parse(horaValue);
                 print(fecha);
                 print(nameValue);
                 Navigator.pushNamed(context, '/menu');
-                usuario.horaAcontecimiento = int.parse(horaValue);
+
               },
               child: Text('Submit'),
             ),

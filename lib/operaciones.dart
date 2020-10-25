@@ -219,14 +219,14 @@ class Operaciones {
     int suma =
     sumaDigitosHastaUnDigito((sumaFecha + _tonicoFundamental).toString());
     print("error2 XD?");
-    //int acontecimiento = sumaDigitosHastaUnDigito((suma + hora).toString());
+    print(suma);
+    print(hora);
+    int a = 13;
+    int acontecimiento = sumaDigitosHastaUnDigito((suma + hora).toString());
     // Aqui esta el error
 
-
-
-    
     print("error2 XD?");
-    return interpretacionNumeros(suma);
+    return interpretacionNumeros(acontecimiento);
   }
 
   calcularCabalaDelAno() {

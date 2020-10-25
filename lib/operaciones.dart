@@ -51,10 +51,10 @@ class Operaciones {
   };
 
   //Constructor
-  Operaciones(String nombreCompleto, String fechaNacimiento) {
+  /*Operaciones(String nombreCompleto, String fechaNacimiento) {
     this._nombreCompleto = nombreCompleto;
     this._fechaNacimiento = fechaNacimiento;
-  }
+  }*/
 
   //Setters y Getters
   set nombreCompleto(String nombre) {
@@ -193,8 +193,18 @@ class Operaciones {
   }
 
   int sumaDigitosFecha(String fecha) {
-    //Falta implementar
-    return 0;
+    //Inicializa valores enteros
+    int suma1,suma2,suma3,sumaFinal;
+    String numero1 = fecha.substring(0,fecha.indexOf(" ") -1);
+    fecha = fecha.substring(fecha.indexOf(" ") + 1);
+    String numero2 = fecha.substring(0, fecha.indexOf(" ") -1);
+    fecha = fecha.substring(fecha.indexOf(" ") + 1);
+    String numero3 = fecha;
+    suma1 = sumaDigitosHastaUnDigito(numero1);
+    suma2 = sumaDigitosHastaUnDigito(numero2);
+    suma3 = sumaDigitosHastaUnDigito(numero3);
+    sumaFinal = suma1 + suma2 + suma3;
+    return sumaDigitosHastaUnDigito(sumaFinal.toString());
   }
 
   unirCabalaDelAno(String cabala) {

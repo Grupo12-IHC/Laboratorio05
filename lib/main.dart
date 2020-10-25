@@ -112,8 +112,10 @@ class Inicio extends StatelessWidget {
   Widget build(BuildContext context) {
     final appTitle = 'Form Validation Demo';
 
+
     return MaterialApp(
       title: appTitle,
+
       routes: <String, WidgetBuilder>{
         "/menu" : (BuildContext context) => Menu(),
         "/inicio" : (BuildContext context) => Inicio(),
@@ -246,7 +248,6 @@ class MyCustomFormState extends State<MyCustomForm> {
                 print(fecha);
                 print(nameValue);
                 Navigator.pushNamed(context, '/menu');
-                usuario.fechaInvestigar = fecha;
                 usuario.horaAcontecimiento = int.parse(horaValue);
               },
               child: Text('Submit'),
@@ -291,6 +292,7 @@ class Parte1 extends StatelessWidget{
   Widget textSection = Container(
     child: Text(
       usuario.interpretacionUrgenciaInterior(),
+      textAlign: TextAlign.center,
     ),
   );
 }
@@ -304,9 +306,10 @@ class Parte2 extends StatelessWidget{
             child: Column(
               children: <Widget>[
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget> [
-                    textSection,
+                    
+                    Expanded(child: Text(usuario.interpretacionTonicoFundamental()))
                   ],
                 ),
                 Row(
@@ -328,6 +331,7 @@ class Parte2 extends StatelessWidget{
     child: Container(
       child: Text(
           usuario.interpretacionTonicoFundamental(),
+        textAlign: TextAlign.center,
       ),
     )
   );
@@ -363,136 +367,17 @@ class Parte3 extends StatelessWidget{
     );
   }
   Widget textSection = Container(
-    child: Text(
-      usuario.interpretacionTonicaDelDia(),
+    child: FittedBox(
+      fit: BoxFit.fill,
+      child: Text("\n" + usuario.interpretacionTonicaDelDia() + "\n",
+      style: TextStyle (
+            fontSize: 20,
+        )
+      ),
     ),
   );
 }
-/*
-class DatosDia extends StatelessWidget {
 
-  @override
-  Widget build(BuildContext context) {
-    final appTitle = 'Form Validation Demo';
-
-    return MaterialApp(
-      title: appTitle,
-      routes: <String, WidgetBuilder>{
-        "/menu" : (BuildContext context) => Menu(),
-        "/inicio" : (BuildContext context) => Inicio(),
-        "/parte1" : (BuildContext context) => Parte1(),
-        "/parte2" : (BuildContext context) => Parte2(),
-        "/parte3" : (BuildContext context) => Parte3(),
-        "/DatosDia" : (BuildContext context) => DatosDia(),
-        "/parte4" : (BuildContext context) => Parte4(),
-        "/parte5" : (BuildContext context) => Parte5(),
-      } ,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(appTitle),
-        ),
-        body: MyCustomForm2(),
-
-      ),
-    );
-  }
-}
-
-class MyCustomForm2 extends StatefulWidget {
-  @override
-  MyCustomFormState2 createState() {
-    return MyCustomFormState2();
-  }
-}
-
-class MyCustomFormState2 extends State<MyCustomForm> {
-
-  final _formKey = GlobalKey<FormState>();
-
-  @override
-  Widget build(BuildContext context) {
-
-    String horaValue;
-    String mesValue;
-    String yearValue;
-    String diaValue;
-
-    final horaController = TextEditingController();
-    final mesController = TextEditingController();
-    final yearController= TextEditingController();
-    final diaController = TextEditingController();
-    // Build a Form widget using the _formKey created above.
-    return Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          TextFormField(
-            decoration: InputDecoration(labelText: "Hora de Acontecimiento:"),
-            keyboardType: TextInputType.number,
-            validator:(value){
-              if(value.isEmpty){
-                return 'Campo Obligatorio';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: "Año de nacimient:"),
-            keyboardType: TextInputType.number,
-            validator: (value){
-              if(value.isEmpty){
-                return 'Campo Obligatorio';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: "Dia de nacimiento:"),
-            keyboardType: TextInputType.number,
-            validator: (value){
-              if(value.isEmpty){
-                return 'Campo Obligatorio';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: "Mes de nacimiento:"),
-            keyboardType: TextInputType.number,
-            validator: (value){
-              if(value.isEmpty){
-                return 'Campo Obligatorio';
-              }
-              return null;
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                // Validate returns true if the form is valid, or false
-                // otherwise.
-                diaValue = diaController.text;
-                yearValue = yearController.text;
-                mesValue = mesController.text;
-                horaValue = horaController.text;
-
-                String fecha = diaValue.toString() + " "+ mesValue.toString() + " "+  yearValue.toString();
-                usuario.fechaInvestigar = fecha;
-                usuario.horaAcontecimiento = int.parse(horaValue);
-
-                Navigator.pushNamed(context, '/parte4');
-              },
-              child: Text('SIGUIENTE'),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-*/
 class Parte4 extends StatelessWidget{
   @override
   Widget build(BuildContext context) {

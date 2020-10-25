@@ -1,15 +1,16 @@
+import 'package:intl/intl.dart';
 class Operaciones {
   //Parámetros que se exigen en el primer panel de la aplicación
   String _nombreCompleto;
   String _fechaNacimiento;
   //Parámetros adicionales para calcular el acontecimiento del día
-  String _fechaInvestigar = "10122020";
+  String _fechaInvestigar;
   int _horaAcontecimiento;
   //Resultados de las operaciones
   int _urgenciaInterior;
   int _tonicoFundamental;
   int _tonicaDelDia;
-  int _acontecimientoDelDia;
+  String _acontecimientoDelDia;
   String _cabalaDelAno; //Kabala del año
 
   //Map, que contienen las interpretaciones de resultados de las operaciones
@@ -107,9 +108,10 @@ class Operaciones {
   }
 
   String interpretacionAcontecimientoDelDia() {
+    calcularFechaActual();
     calcularTonicoFundamental();
     calcularAcontecimientoDelDia();
-    return interpretacionNumeros(_acontecimientoDelDia);
+    return _acontecimientoDelDia;
   }
 
   String get cabalaDelAno {
@@ -143,19 +145,55 @@ class Operaciones {
   }
 
   calcularAcontecimientoDelDia() {
-    String fecha = _fechaInvestigar;
+    String dia = _fechaInvestigar.substring(0, 2);
+    String mesAno = _fechaInvestigar.substring(2);
     int hora = _horaAcontecimiento;
+    int diaBase = int.parse(dia);
+    String dia1 =
+    operacionAcontecimientoDelDia((diaBase + 0).toString(), mesAno, hora);
+    String dia2 =
+    operacionAcontecimientoDelDia((diaBase + 1).toString(), mesAno, hora);
+    String dia3 =
+    operacionAcontecimientoDelDia((diaBase + 2).toString(), mesAno, hora);
+    String dia4 =
+    operacionAcontecimientoDelDia((diaBase + 3).toString(), mesAno, hora);
+    String dia5 =
+    operacionAcontecimientoDelDia((diaBase + 4).toString(), mesAno, hora);
+    String dia6 =
+    operacionAcontecimientoDelDia((diaBase + 5).toString(), mesAno, hora);
+    String dia7 =
+    operacionAcontecimientoDelDia((diaBase + 6).toString(), mesAno, hora);
+    String concatenacionDias = dia1 +
+        '\n' +
+        dia2 +
+        '\n' +
+        dia3 +
+        '\n' +
+        dia4 +
+        '\n' +
+        dia5 +
+        '\n' +
+        dia6 +
+        '\n' +
+        dia7;
+    this._acontecimientoDelDia = concatenacionDias;
+  }
+
+  String operacionAcontecimientoDelDia(String dia, String mesAno, int hora) {
+    String fecha = dia + mesAno;
     int sumaFecha = sumaDigitosFecha(fecha);
-    int suma = sumaDigitosHastaUnDigito((sumaFecha + _tonicoFundamental).toString());
+    int suma =
+    sumaDigitosHastaUnDigito((sumaFecha + _tonicoFundamental).toString());
     int acontecimiento = sumaDigitosHastaUnDigito((suma + hora).toString());
-    this._acontecimientoDelDia = acontecimiento;
+    return interpretacionNumeros(acontecimiento);
   }
 
   calcularCabalaDelAno() {
     String fecha, c1, c2, c3;
     int cabala1, cabala2, cabala3;
     int sumaFecha1, sumaFecha2, sumaFecha3;
-    fecha = _fechaNacimiento.substring(_fechaNacimiento.length - 4,_fechaNacimiento.length);
+    fecha = _fechaNacimiento.substring(
+        _fechaNacimiento.length - 4, _fechaNacimiento.length);
     print(fecha);
     sumaFecha1 = int.parse(fecha) + sumaDigitos(fecha);
     cabala1 = sumaDigitosHastaUnDigito(sumaFecha1.toString());
@@ -194,10 +232,10 @@ class Operaciones {
 
   int sumaDigitosFecha(String fecha) {
     //Inicializa valores enteros
-    int suma1,suma2,suma3,sumaFinal;
-    String numero1 = fecha.substring(0,fecha.indexOf(" ") -1);
+    int suma1, suma2, suma3, sumaFinal;
+    String numero1 = fecha.substring(0, fecha.indexOf(" ") - 1);
     fecha = fecha.substring(fecha.indexOf(" ") + 1);
-    String numero2 = fecha.substring(0, fecha.indexOf(" ") -1);
+    String numero2 = fecha.substring(0, fecha.indexOf(" ") - 1);
     fecha = fecha.substring(fecha.indexOf(" ") + 1);
     String numero3 = fecha;
     suma1 = sumaDigitosHastaUnDigito(numero1);
@@ -236,5 +274,16 @@ class Operaciones {
     //Se busca la interpretación en el Map interpretacionCabalaDelAno
     interpretacion = interpretacionCabalaDelAnoMap[numero];
     return interpretacion;
+  }
+
+  calcularFechaActual() {
+    var now = new DateTime.now();
+    var formatter = new DateFormat("dd-MM-yyyy");
+    String formattedDate = formatter.format(now);
+    String fecha = formattedDate.replaceAll('-', '');
+    print(formattedDate);
+    print(fecha);
+    this._fechaInvestigar = fecha;
+
   }
 }

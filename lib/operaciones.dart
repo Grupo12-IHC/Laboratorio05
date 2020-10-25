@@ -3,7 +3,7 @@ class Operaciones {
   String _nombreCompleto;
   String _fechaNacimiento;
   //Parámetros adicionales para calcular el acontecimiento del día
-  String _fechaInvestigar;
+  String _fechaInvestigar = "10122020";
   int _horaAcontecimiento;
   //Resultados de las operaciones
   int _urgenciaInterior;
@@ -146,8 +146,7 @@ class Operaciones {
     String fecha = _fechaInvestigar;
     int hora = _horaAcontecimiento;
     int sumaFecha = sumaDigitosFecha(fecha);
-    int suma =
-    sumaDigitosHastaUnDigito((sumaFecha + _tonicoFundamental).toString());
+    int suma = sumaDigitosHastaUnDigito((sumaFecha + _tonicoFundamental).toString());
     int acontecimiento = sumaDigitosHastaUnDigito((suma + hora).toString());
     this._acontecimientoDelDia = acontecimiento;
   }
@@ -156,7 +155,8 @@ class Operaciones {
     String fecha, c1, c2, c3;
     int cabala1, cabala2, cabala3;
     int sumaFecha1, sumaFecha2, sumaFecha3;
-    fecha = _fechaNacimiento;
+    fecha = _fechaNacimiento.substring(_fechaNacimiento.length - 4,_fechaNacimiento.length);
+    print(fecha);
     sumaFecha1 = int.parse(fecha) + sumaDigitos(fecha);
     cabala1 = sumaDigitosHastaUnDigito(sumaFecha1.toString());
     sumaFecha2 = sumaFecha1 + sumaDigitos(sumaFecha1.toString());

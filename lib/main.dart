@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
           "/parte1" : (BuildContext context) => Parte1(),
           "/parte2" : (BuildContext context) => Parte2(),
           "/parte3" : (BuildContext context) => Parte3(),
-          "/DatosDia" : (BuildContext context) => DatosDia(),
           "/parte4" : (BuildContext context) => Parte4(),
           "/parte5" : (BuildContext context) => Parte5(),
         } ,
@@ -121,7 +120,6 @@ class Inicio extends StatelessWidget {
         "/parte1" : (BuildContext context) => Parte1(),
         "/parte2" : (BuildContext context) => Parte2(),
         "/parte3" : (BuildContext context) => Parte3(),
-        "/DatosDia" : (BuildContext context) => DatosDia(),
         "/parte4" : (BuildContext context) => Parte4(),
         "/parte5" : (BuildContext context) => Parte5(),
       } ,
@@ -162,11 +160,13 @@ class MyCustomFormState extends State<MyCustomForm> {
     String mesValue;
     String yearValue;
     String diaValue;
+    String horaValue;
 
     final nameController = TextEditingController();
     final mesController = TextEditingController();
     final yearController= TextEditingController();
     final diaController = TextEditingController();
+    final horaController = TextEditingController();
     // Build a Form widget using the _formKey created above.
     return Form(
       key: _formKey,
@@ -216,12 +216,21 @@ class MyCustomFormState extends State<MyCustomForm> {
               return null;
             },
           ),
+          TextFormField(
+            decoration: InputDecoration(labelText: "Hora de Acontecimiento:"),
+            controller: horaController,
+            keyboardType: TextInputType.number,
+            validator:(value){
+              if(value.isEmpty){
+                return 'Campo Obligatorio';
+              }
+              return null;
+            },
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: ElevatedButton(
               onPressed: () {
-                // Validate returns true if the form is valid, or false
-                // otherwise.
                 if (_formKey.currentState.validate()) {
 
                 }
@@ -229,6 +238,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                 yearValue = yearController.text;
                 mesValue = mesController.text;
                 nameValue = nameController.text;
+                horaValue = nameController.text;
 
                 String fecha = diaValue.toString() + " " +  mesValue.toString() + " " + yearValue.toString();
                 usuario.nombreCompleto = nameValue;
@@ -236,6 +246,8 @@ class MyCustomFormState extends State<MyCustomForm> {
                 print(fecha);
                 print(nameValue);
                 Navigator.pushNamed(context, '/menu');
+                usuario.fechaInvestigar = fecha;
+                usuario.horaAcontecimiento = int.parse(horaValue);
               },
               child: Text('Submit'),
             ),
@@ -356,7 +368,7 @@ class Parte3 extends StatelessWidget{
     ),
   );
 }
-
+/*
 class DatosDia extends StatelessWidget {
 
   @override
@@ -379,35 +391,26 @@ class DatosDia extends StatelessWidget {
         appBar: AppBar(
           title: Text(appTitle),
         ),
-        body: MyCustomForm(),
+        body: MyCustomForm2(),
 
       ),
     );
   }
 }
-// Falta implementar el segundo formulario
-/*
-// Create a Form widget.
+
 class MyCustomForm2 extends StatefulWidget {
   @override
-  MyCustomFormState createState() {
-    return MyCustomFormState();
+  MyCustomFormState2 createState() {
+    return MyCustomFormState2();
   }
 }
 
-// Create a corresponding State class.
-// This class holds data related to the form.
 class MyCustomFormState2 extends State<MyCustomForm> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-  //
-  // Note: This is a GlobalKey<FormState>,
-  // not a GlobalKey<MyCustomFormState>.
+
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-
 
     String horaValue;
     String mesValue;
@@ -478,6 +481,7 @@ class MyCustomFormState2 extends State<MyCustomForm> {
                 String fecha = diaValue.toString() + " "+ mesValue.toString() + " "+  yearValue.toString();
                 usuario.fechaInvestigar = fecha;
                 usuario.horaAcontecimiento = int.parse(horaValue);
+
                 Navigator.pushNamed(context, '/parte4');
               },
               child: Text('SIGUIENTE'),
@@ -521,7 +525,7 @@ class Parte4 extends StatelessWidget{
   }
   Widget textSection = Container(
     child: Text(
-        "Aqui va el resultado"
+        usuario.interpretacionAcontecimientoDelDia(),
     ),
   );
 }
@@ -557,7 +561,7 @@ class Parte5 extends StatelessWidget{
   }
   Widget textSection = Container(
     child: Text(
-      usuario.interpretacionCabalaDelAno(0),
+      usuario.cabalaDelAno,
     ),
   );
 }
@@ -598,7 +602,7 @@ class Menu extends StatelessWidget {
                         shape: new RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0)),
                         onPressed: () {
-                          Navigator.pushNamed(context, "/DatosDia");
+                          Navigator.pushNamed(context, "/parte4");
                         },
                         child: SizedBox(
                           width: 250,

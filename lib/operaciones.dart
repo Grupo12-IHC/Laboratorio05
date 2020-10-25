@@ -3,9 +3,11 @@ class Operaciones {
   //Parámetros que se exigen en el primer panel de la aplicación
   String _nombreCompleto;
   String _fechaNacimiento;
+
   //Parámetros adicionales para calcular el acontecimiento del día
   String _fechaInvestigar;
   int _horaAcontecimiento;
+
   //Resultados de las operaciones
   int _urgenciaInterior;
   int _tonicoFundamental;
@@ -25,6 +27,7 @@ class Operaciones {
     8: 'El número 8 representa la infinidad, la moderación, el caduceo y la repartición con justicia',
     9: 'El número 9 representa el sexo, la lucha entre sí mismo, contra la naturaleza y contra todo'
   };
+
   //Map, que contienen las interpretaciones de los números de la cabala
   Map<int, String> interpretacionCabalaDelAnoMap = {
     1: 'El arcano 1 representa la voluntad y poder',
@@ -135,6 +138,7 @@ class Operaciones {
     print(longitud);
     tonico = sumaDigitosHastaUnDigito(longitud.toString());
     this._tonicoFundamental = tonico;
+    print("llegue aqui :3");
   }
 
   calcularTonicaDelDia() {
@@ -145,13 +149,20 @@ class Operaciones {
   }
 
   calcularAcontecimientoDelDia() {
+    print("estoy aqui ahora uwu");
     String dia = _fechaInvestigar.substring(0, 2);
     String mesAno = _fechaInvestigar.substring(2);
     int hora = _horaAcontecimiento;
     int diaBase = int.parse(dia);
-    String dia1 =
-    operacionAcontecimientoDelDia((diaBase + 0).toString(), mesAno, hora);
-    String dia2 =
+    //String dia1 =
+    //operacionAcontecimientoDelDia((diaBase + 0).toString(), mesAno, hora);
+    String dia1 = operacionAcontecimientoDelDia(
+        '0' + sumaDigitosHastaUnDigito((diaBase + 0).toString()).toString(),
+        mesAno, hora);
+    print("mira esto v:");
+    print("mira esto v:");
+
+    /*String dia2 =
     operacionAcontecimientoDelDia((diaBase + 1).toString(), mesAno, hora);
     String dia3 =
     operacionAcontecimientoDelDia((diaBase + 2).toString(), mesAno, hora);
@@ -162,7 +173,25 @@ class Operaciones {
     String dia6 =
     operacionAcontecimientoDelDia((diaBase + 5).toString(), mesAno, hora);
     String dia7 =
-    operacionAcontecimientoDelDia((diaBase + 6).toString(), mesAno, hora);
+    operacionAcontecimientoDelDia((diaBase + 6).toString(), mesAno, hora);*/
+    String dia2 = operacionAcontecimientoDelDia(
+        '0' + sumaDigitosHastaUnDigito((diaBase + 1).toString()).toString(),
+        mesAno, hora);
+    String dia3 = operacionAcontecimientoDelDia(
+        '0' + sumaDigitosHastaUnDigito((diaBase + 2).toString()).toString(),
+        mesAno, hora);
+    String dia4 = operacionAcontecimientoDelDia(
+        '0' + sumaDigitosHastaUnDigito((diaBase + 3).toString()).toString(),
+        mesAno, hora);
+    String dia5 = operacionAcontecimientoDelDia(
+        '0' + sumaDigitosHastaUnDigito((diaBase + 4).toString()).toString(),
+        mesAno, hora);
+    String dia6 = operacionAcontecimientoDelDia(
+        '0' + sumaDigitosHastaUnDigito((diaBase + 5).toString()).toString(),
+        mesAno, hora);
+    String dia7 = operacionAcontecimientoDelDia(
+        '0' + sumaDigitosHastaUnDigito((diaBase + 6).toString()).toString(),
+        mesAno, hora);
     String concatenacionDias = dia1 +
         '\n' +
         dia2 +
@@ -176,16 +205,28 @@ class Operaciones {
         dia6 +
         '\n' +
         dia7;
+    print(concatenacionDias);
     this._acontecimientoDelDia = concatenacionDias;
+    print(_acontecimientoDelDia + "holiwi");
   }
 
   String operacionAcontecimientoDelDia(String dia, String mesAno, int hora) {
+    print("error?");
     String fecha = dia + mesAno;
-    int sumaFecha = sumaDigitosFecha(fecha);
+    print(fecha);
+    int sumaFecha = sumaDigitosFechaSinEspacio(fecha);
+    print(sumaFecha);
     int suma =
     sumaDigitosHastaUnDigito((sumaFecha + _tonicoFundamental).toString());
-    int acontecimiento = sumaDigitosHastaUnDigito((suma + hora).toString());
-    return interpretacionNumeros(acontecimiento);
+    print("error2 XD?");
+    //int acontecimiento = sumaDigitosHastaUnDigito((suma + hora).toString());
+    // Aqui esta el error
+
+
+
+    
+    print("error2 XD?");
+    return interpretacionNumeros(suma);
   }
 
   calcularCabalaDelAno() {
@@ -209,7 +250,8 @@ class Operaciones {
 
   //Método que suma los digitos de un número(String)
   int sumaDigitos(String numero) {
-    int suma = 0, digito;
+    int suma = 0,
+        digito;
     for (int i = 0; i < numero.length; i++) {
       digito = int.parse(numero.substring(i, i + 1));
       suma += digito;
@@ -283,7 +325,20 @@ class Operaciones {
     String fecha = formattedDate.replaceAll('-', '');
     print(formattedDate);
     print(fecha);
+    sumaDigitosFechaSinEspacio(fecha);
     this._fechaInvestigar = fecha;
+  }
 
+  int sumaDigitosFechaSinEspacio(String fecha) {
+    //Inicializa valores enteros
+    int suma1, suma2, suma3, sumaFinal;
+    String numero1 = fecha.substring(0, 2);
+    String numero2 = fecha.substring(2, 4);
+    String numero3 = fecha.substring(4);
+    suma1 = sumaDigitosHastaUnDigito(numero1);
+    suma2 = sumaDigitosHastaUnDigito(numero2);
+    suma3 = sumaDigitosHastaUnDigito(numero3);
+    sumaFinal = suma1 + suma2 + suma3;
+    return sumaDigitosHastaUnDigito(sumaFinal.toString());
   }
 }

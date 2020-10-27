@@ -17,41 +17,41 @@ class Operaciones {
 
   //Map, que contienen las interpretaciones de resultados de las operaciones
   Map<int, String> interpretacionNumerosMap = {
-    1: 'El número 1 representa la sabiduría, el Astro Rey, el que nos da la vida',
-    2: 'El número 2 representa la creación, aprender a manejar las ideas y los negocios',
-    3: 'El número 3 representa la vida, permite la realización de nuestros caros anhelos',
-    4: 'El número 4 representa los cuatro cuerpos, el aspecto económico y la reflexión',
-    5: 'El número 5 representa la inteligencia, símbolo de poder',
-    6: 'El número 6 representa el amor, la reciprocidad, fertilidad y la amorosidad',
-    7: 'El número 7 representa la eficiencia, integridad y concentración',
-    8: 'El número 8 representa la infinidad, la moderación, el caduceo y la repartición con justicia',
-    9: 'El número 9 representa el sexo, la lucha entre sí mismo, contra la naturaleza y contra todo'
+    1: 'El número 1 representa' + '\n' + 'la sabiduría, el Astro Rey,' + '\n' + ' el que nos da la vida',
+    2: 'El número 2 representa' + '\n' + ' la creación, aprender a manejar ' + '\n' + 'las ideas y los negocios',
+    3: 'El número 3 representa' + '\n' + ' la vida, permite la realización ' + '\n' + 'de nuestros caros anhelos',
+    4: 'El número 4 representa' + '\n' + ' los cuatro cuerpos, el aspecto' + '\n' + ' económico y la reflexión',
+    5: 'El número 5 representa' + '\n' + ' la inteligencia, símbolo de poder',
+    6: 'El número 6 representa' + '\n' + ' el amor, la reciprocidad, fertilidad' + '\n' + ' y la amorosidad',
+    7: 'El número 7 representa' + '\n' + ' la eficiencia, integridad y' + '\n' + ' concentración',
+    8: 'El número 8 representa' + '\n' + ' la infinidad, la moderación, el caduceo' + '\n' + ' y la repartición con justicia',
+    9: 'El número 9 representa' + '\n' + ' el sexo, la lucha entre sí mismo,' + '\n' + ' contra la naturaleza y contra todo'
   };
 
   //Map, que contienen las interpretaciones de los números de la cabala
   Map<int, String> interpretacionCabalaDelAnoMap = {
-    1: 'El arcano 1 representa la voluntad y poder',
-    2: 'El arcano 2 representa la ciencia oculta y favorable',
-    3: 'El arcano 3 representa la producción material y Espiritual',
-    4: 'El arcano 4 representa el progreso',
-    5: 'El arcano 5 representa el karma',
-    6: 'El arcano 6 representa la victoria y la buena suerte',
-    7: 'El arcano 7 representa las guerras, luchas y amargura',
-    8: 'El arcano 8 representa el sufrimiento dolor',
-    9: 'El arcano 9 representa la soledad',
-    10: 'El arcano 10 representa el cambio y buenos negocios',
-    11: 'El arcano 11 representa la ley y no temor',
-    12: 'El arcano 12 representa el dolor y pruebas',
-    13: 'El arcano 13 representa transformaciones y cambio total',
-    14: 'El arcano 14 representa larga vida y estabilidad	',
-    15: 'El arcano 15 representa peligros y fracaso amoroso',
-    16: 'El arcano 16 representa la fragilidad',
-    17: 'El arcano 17 representa la esperanza',
-    18: 'El arcano 18 representa las enfermedades',
-    19: 'El arcano 19 representa el éxito y buena suerte',
-    20: 'El arcano 20 representa la resurrección',
-    21: 'El arcano 21 representa la transmutación',
-    22: 'El arcano 22 representa el triunfo y el poder'
+    1: 'El arcano 1 representa' + '\n' + ' la voluntad y poder',
+    2: 'El arcano 2 representa' + '\n' + ' la ciencia oculta y favorable',
+    3: 'El arcano 3 representa' + '\n' + ' la producción material y Espiritual',
+    4: 'El arcano 4 representa' + '\n' + ' el progreso',
+    5: 'El arcano 5 representa' + '\n' + ' el karma',
+    6: 'El arcano 6 representa' + '\n' + ' la victoria y la buena suerte',
+    7: 'El arcano 7 representa' + '\n' + ' las guerras, luchas y amargura',
+    8: 'El arcano 8 representa' + '\n' + ' el sufrimiento dolor',
+    9: 'El arcano 9 representa' + '\n' + ' la soledad',
+    10: 'El arcano 10 representa' + '\n' + ' el cambio y buenos negocios',
+    11: 'El arcano 11 representa' + '\n' + ' la ley y no temor',
+    12: 'El arcano 12 representa' + '\n' + ' el dolor y pruebas',
+    13: 'El arcano 13 representa' + '\n' + ' transformaciones y cambio total',
+    14: 'El arcano 14 representa' + '\n' + ' larga vida y estabilidad	',
+    15: 'El arcano 15 representa' + '\n' + ' peligros y fracaso amoroso',
+    16: 'El arcano 16 representa' + '\n' + ' la fragilidad',
+    17: 'El arcano 17 representa' + '\n' + ' la esperanza',
+    18: 'El arcano 18 representa' + '\n' + ' las enfermedades',
+    19: 'El arcano 19 representa' + '\n' + ' el éxito y buena suerte',
+    20: 'El arcano 20 representa' + '\n' + ' la resurrección',
+    21: 'El arcano 21 representa' + '\n' + ' la transmutación',
+    22: 'El arcano 22 representa' + '\n' + ' el triunfo y el poder'
   };
 
   //Constructor
@@ -138,7 +138,6 @@ class Operaciones {
     print(longitud);
     tonico = sumaDigitosHastaUnDigito(longitud.toString());
     this._tonicoFundamental = tonico;
-    print("llegue aqui :3");
   }
 
   calcularTonicaDelDia() {
@@ -149,7 +148,6 @@ class Operaciones {
   }
 
   calcularAcontecimientoDelDia() {
-    print("estoy aqui ahora uwu");
     String dia = _fechaInvestigar.substring(0, 2);
     String mesAno = _fechaInvestigar.substring(2);
     int hora = _horaAcontecimiento;
@@ -159,8 +157,6 @@ class Operaciones {
     String dia1 = operacionAcontecimientoDelDia(
         '0' + sumaDigitosHastaUnDigito((diaBase + 0).toString()).toString(),
         mesAno, hora);
-    print("mira esto v:");
-    print("mira esto v:");
 
     /*String dia2 =
     operacionAcontecimientoDelDia((diaBase + 1).toString(), mesAno, hora);
@@ -207,25 +203,15 @@ class Operaciones {
         dia7;
     print(concatenacionDias);
     this._acontecimientoDelDia = concatenacionDias;
-    print(_acontecimientoDelDia + "holiwi");
   }
 
   String operacionAcontecimientoDelDia(String dia, String mesAno, int hora) {
-    print("error?");
     String fecha = dia + mesAno;
-    print(fecha);
     int sumaFecha = sumaDigitosFechaSinEspacio(fecha);
-    print(sumaFecha);
     int suma =
     sumaDigitosHastaUnDigito((sumaFecha + _tonicoFundamental).toString());
-    print("error2 XD?");
-    print(suma);
-    print(hora);
-    int a = 13;
     int acontecimiento = sumaDigitosHastaUnDigito((suma + hora).toString());
-    // Aqui esta el error
 
-    print("error2 XD?");
     return interpretacionNumeros(acontecimiento);
   }
 

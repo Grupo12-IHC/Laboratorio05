@@ -32,7 +32,7 @@ class Bienvenida extends StatelessWidget {
     return new Scaffold(
       body: Container(
         padding: EdgeInsets.only(
-            top: 130,
+            top: 240,
             bottom: 10,
             right: 10,
             left: 10
@@ -61,7 +61,7 @@ class Bienvenida extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.all(10),
                     child: RaisedButton(
-                      color: Colors.indigo,
+                      color: Colors.blue,
                       shape: new RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0)),
                       onPressed: () {
@@ -91,16 +91,16 @@ class Bienvenida extends StatelessWidget {
   Widget textSection = Container(
     padding: const EdgeInsets.all(10),
     child: Text(
-      'Bienvenido' + '\n'
-          'Estudio numerologico',
+      'Bienvenido !!!' + '\n'
+          'Estudio numerologico' + '\n',
       softWrap: true,
       textAlign: TextAlign.center,
       style: TextStyle(
-        fontSize: 35,
+        fontSize: 34,
         foreground: Paint()
           ..style = PaintingStyle.stroke
           ..strokeWidth = 4
-          ..color = Colors.indigo,
+          ..color = Colors.blue,
       ),
     ),
   );
@@ -127,7 +127,7 @@ class Inicio extends StatelessWidget {
       } ,
       home: Scaffold(
         appBar: AppBar(
-          title: Text(appTitle),
+          title: Text("INGRESE SUS DATOS"),
         ),
         body: MyCustomForm(),
 
@@ -177,7 +177,10 @@ class MyCustomFormState extends State<MyCustomForm> {
         children: <Widget>[
           TextFormField(
             controller: nameController,
-            decoration: InputDecoration(labelText: "Nombre Completo:"),
+            decoration: InputDecoration(
+                labelText: "Nombre Completo:",
+                contentPadding: const EdgeInsets.all(20)
+            ),
             validator:(value){
               if(value.isEmpty){
                 return 'Campo Obligatorio';
@@ -187,7 +190,10 @@ class MyCustomFormState extends State<MyCustomForm> {
           ),
           TextFormField(
             controller: yearController,
-            decoration: InputDecoration(labelText: "Año de nacimiento:"),
+            decoration: InputDecoration(
+                labelText: "Año de nacimiento:",
+                contentPadding: const EdgeInsets.all(20)
+            ),
             keyboardType: TextInputType.number,
             validator: (value){
               if(value.isEmpty){
@@ -198,7 +204,10 @@ class MyCustomFormState extends State<MyCustomForm> {
           ),
           TextFormField(
             controller: diaController,
-            decoration: InputDecoration(labelText: "Dia de nacimiento:"),
+            decoration: InputDecoration(
+                labelText: "Dia de nacimiento:",
+                contentPadding: const EdgeInsets.all(20)
+            ),
             keyboardType: TextInputType.number,
             validator: (value){
               if(value.isEmpty){
@@ -209,7 +218,10 @@ class MyCustomFormState extends State<MyCustomForm> {
           ),
           TextFormField(
             controller: mesController,
-            decoration: InputDecoration(labelText: "Mes de nacimiento:"),
+            decoration: InputDecoration(
+                labelText: "Mes de nacimiento:",
+                contentPadding: const EdgeInsets.all(20)
+            ),
             keyboardType: TextInputType.number,
             validator: (value){
               if(value.isEmpty){
@@ -219,7 +231,10 @@ class MyCustomFormState extends State<MyCustomForm> {
             },
           ),
           TextFormField(
-            decoration: InputDecoration(labelText: "Hora de Acontecimiento:"),
+            decoration: InputDecoration(
+                labelText: "Hora de Acontecimiento:",
+                contentPadding: const EdgeInsets.all(20)
+            ),
             controller: horaController,
             keyboardType: TextInputType.number,
             validator:(value){
@@ -230,7 +245,7 @@ class MyCustomFormState extends State<MyCustomForm> {
             },
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
             child: ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState.validate()) {
@@ -251,7 +266,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                 Navigator.pushNamed(context, '/menu');
 
               },
-              child: Text('Submit'),
+              child: Text('SIGUIENTE'),
             ),
           ),
         ],
@@ -292,8 +307,9 @@ class Parte1 extends StatelessWidget{
   }
   Widget textSection = Container(
     child: Text(
-      usuario.interpretacionUrgenciaInterior(),
+      '\n' + usuario.interpretacionUrgenciaInterior() + '\n' ,
       textAlign: TextAlign.center,
+      style: TextStyle(fontSize: 20),
     ),
   );
 }
@@ -307,10 +323,9 @@ class Parte2 extends StatelessWidget{
             child: Column(
               children: <Widget>[
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget> [
-                    
-                    Expanded(child: Text(usuario.interpretacionTonicoFundamental()))
+                    textSection,
                   ],
                 ),
                 Row(
@@ -331,8 +346,9 @@ class Parte2 extends StatelessWidget{
   Widget textSection = Container(
     child: Container(
       child: Text(
-          usuario.interpretacionTonicoFundamental(),
+        '\n' + usuario.interpretacionTonicoFundamental()+ '\n' ,
         textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 23),
       ),
     )
   );
@@ -368,13 +384,11 @@ class Parte3 extends StatelessWidget{
     );
   }
   Widget textSection = Container(
-    child: FittedBox(
-      fit: BoxFit.fill,
-      child: Text("\n" + usuario.interpretacionTonicaDelDia() + "\n",
-      style: TextStyle (
-            fontSize: 20,
-        )
-      ),
+
+    child: Text(
+      '\n' + usuario.interpretacionTonicaDelDia() + '\n' ,
+      textAlign: TextAlign.center,
+      style: TextStyle(fontSize: 21),
     ),
   );
 }
@@ -411,7 +425,8 @@ class Parte4 extends StatelessWidget{
   }
   Widget textSection = Container(
     child: Text(
-        usuario.interpretacionAcontecimientoDelDia(),
+      '\n' + usuario.interpretacionAcontecimientoDelDia() + '\n' ,
+      style: TextStyle(fontSize: 16),
     ),
   );
 }
@@ -447,7 +462,8 @@ class Parte5 extends StatelessWidget{
   }
   Widget textSection = Container(
     child: Text(
-      usuario.cabalaDelAno,
+        '\n' + usuario.cabalaDelAno + '\n' ,
+      style: TextStyle(fontSize: 20)
     ),
   );
 }
@@ -484,14 +500,14 @@ class Menu extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.all(10),
                       child: RaisedButton(
-                        color: Colors.indigo,
+                        color: Colors.blue,
                         shape: new RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0)),
                         onPressed: () {
                           Navigator.pushNamed(context, "/parte4");
                         },
                         child: SizedBox(
-                          width: 250,
+                          width: 290,
                           height: 100,
                           child: Center(
                             child: Text("ACONTECIMIENTO DEL DIA",
@@ -516,17 +532,17 @@ class Menu extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.all(10),
                       child: RaisedButton(
-                        color: Colors.indigo,
+                        color: Colors.blue,
                         shape: new RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0)),
                         onPressed: () {
                           Navigator.pushNamed(context, "/parte2");
                         },
                         child: SizedBox(
-                          width: 100,
+                          width: 120,
                           height: 100,
                           child: Center(
-                            child: Text("TONICA DEL FUNDAMENTAL",
+                            child: Text("TONICA FUNDAMENTAL",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.white,
@@ -543,14 +559,14 @@ class Menu extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.all(10),
                       child: RaisedButton(
-                        color: Colors.indigo,
+                        color: Colors.blue,
                         shape: new RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0)),
                         onPressed: () {
                           Navigator.pushNamed(context, "/parte3");
                         },
                         child: SizedBox(
-                          width: 100,
+                          width: 120,
                           height: 100,
                           child: Center(
                             child: Text("TONICA DEL DIA",
@@ -575,14 +591,14 @@ class Menu extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.all(10),
                       child: RaisedButton(
-                        color: Colors.indigo,
+                        color: Colors.blue,
                         shape: new RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0)),
                         onPressed: () {
                           Navigator.pushNamed(context, "/parte1");
                         },
                         child: SizedBox(
-                          width: 100,
+                          width: 120,
                           height: 100,
                           child: Center(
                             child: Text("URGENCIA INTERIOR",
@@ -602,14 +618,14 @@ class Menu extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.all(10),
                       child: RaisedButton(
-                        color: Colors.indigo,
+                        color: Colors.blue,
                         shape: new RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0)),
                         onPressed: () {
                           Navigator.pushNamed(context, "/parte5");
                         },
                         child: SizedBox(
-                          width: 100,
+                          width: 120,
                           height: 100,
                           child: Center(
                             child: Text("CABALA DEL AÑO",
